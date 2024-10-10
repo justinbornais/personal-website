@@ -9,7 +9,14 @@ const { title, subtitle } = Astro.props;
     <p class="text-lg text-gray-700 dark:text-gray-200">Software Developer, Musician</p>
   </div>
   <div class="lg:w-1/2 mt-6 lg:mt-0 order-1 lg:order-2">
-    <img src="/personal-website/me.webp" alt="Justin Bornais" class="h-96 w-auto rounded-lg">
+    <div class="w-80 h-80 overflow-hidden rounded-lg">
+      <img
+        src="/personal-website/me.webp"
+        alt="Justin Bornais"
+        class="w-full h-full object-cover"
+        style="object-position: 100% 50%; transform: scale(1.2); transform-origin: 23% 50%;"
+      >
+    </div>
   </div>
 </section>
 
