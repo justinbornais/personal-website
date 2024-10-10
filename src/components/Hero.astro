@@ -1,15 +1,24 @@
 ---
-const { title, subtitle, backgroundImage } = Astro.props;
+const { title, subtitle } = Astro.props;
 ---
 
-<section class="relative h-screen bg-cover bg-center lg:bg-top flex items-center justify-center" style={`background-image: url(${backgroundImage}); background-size: 110%; background-position: left 32%;`}>
-  <div class="absolute inset-0 bg-black bg-opacity-50"></div>
-
-  <div class="relative z-10 text-center px-6">
-    <h1 class="text-6xl font-bold text-white mb-4">{title}</h1>
-    <p class="text-lg text-gray-200">{subtitle}</p>
-    <a href="#next-section" class="mt-6 inline-block bg-blue-500 text-white py-3 px-6 rounded-full hover:bg-blue-600">
-      Learn More
-    </a>
+<section class="min-h-screen flex flex-col-reverse lg:flex-row items-center justify-center lg:space-x-10 p-6 lg:p-12">
+  <div class="text-center lg:text-right lg:w-1/2 order-2 lg:order-1">
+    <p class="text-lg text-gray-700 dark:text-gray-200">Hello, my name is</p>
+    <h1 class="text-5xl lg:text-7xl font-bold my-2 name">Justin Bornais</h1>
+    <p class="text-lg text-gray-700 dark:text-gray-200">Software Developer, Musician</p>
+  </div>
+  <div class="lg:w-1/2 mt-6 lg:mt-0 order-1 lg:order-2">
+    <img src="/personal-website/me.webp" alt="Justin Bornais" class="h-96 w-auto rounded-lg">
   </div>
 </section>
+
+<style>
+  .name {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+</style>
