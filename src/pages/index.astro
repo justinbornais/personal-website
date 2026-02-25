@@ -1,11 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.tsx';
+import About from '../components/About.tsx';
 ---
 
 <Layout title="Justin Bornais">
 	<main>
 		<Hero client:load title="Justin Bornais" subtitle="Software Developer, Musician" />
+		<About client:visible />
 	</main>
 </Layout>
 
