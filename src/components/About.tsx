@@ -85,8 +85,8 @@ const About: React.FC = () => {
           <div className="flex flex-col lg:flex-row gap-8 items-start">
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed flex-1">
               <p>
-                I'm currently working at <span className="text-amber-400 font-semibold">Tessonics</span> as a Software Developer, 
-                where I build robust applications using a diverse tech stack including{' '}
+                I'm currently working at <a className="text-amber-400 font-semibold" href="https://tessonics.com" target="_blank" rel="noopener noreferrer">Tessonics</a>{' '}
+                as a Software Developer, where I build robust applications using a diverse tech stack including{' '}
                 <span className="text-blue-400">C++</span>,{' '}
                 <span className="text-cyan-400">Golang</span>,{' '}
                 <span className="text-red-400">Delphi</span>,{' '}
@@ -97,10 +97,12 @@ const About: React.FC = () => {
               </p>
               
               <p>
-                Beyond coding, I'm a passionate musician. I play piano, organ, and guitar, and I also sing. 
-                I taught piano for 7 years, helping students of all ages discover their musical potential. 
+                Beyond software development, I'm a passionate musician. I play piano, organ, and guitar, and I also sing. 
+                I taught piano for 7 years, helping over 20 students of all ages discover their musical potential.
+              </p>
+              <p>
                 For the past 4 years, I've had the honor of performing at weddings and funerals, 
-                providing meaningful musical moments during life's most significant occasions.
+                providing impactful musical experiences during life's most significant occasions.
               </p>
             </div>
 

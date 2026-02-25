@@ -2,12 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.tsx';
 import About from '../components/About.tsx';
+import Contact from '../components/Contact.tsx';
 ---
 
 <Layout title="Justin Bornais">
 	<main>
 		<Hero client:load title="Justin Bornais" subtitle="Software Developer, Musician" />
 		<About client:visible />
+		<Contact />
 	</main>
 </Layout>
 

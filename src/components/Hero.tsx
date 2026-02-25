@@ -61,8 +61,8 @@ const Hero: React.FC<HeroProps> = ({
         baseX: x,
         baseY: y,
         size: Math.random() * 2 + 1,
-        speedX: (Math.random() - 0.5) * 2.5,
-        speedY: (Math.random() - 0.5) * 2.5,
+        speedX: (Math.random() - 0.5) * 2.0,
+        speedY: (Math.random() - 0.5) * 2.0,
         opacity: Math.random() * 0.5 + 0.3,
       });
     }
@@ -87,23 +87,25 @@ const Hero: React.FC<HeroProps> = ({
         if (distance < mouseRadius && distance > 0) {
           const angle = Math.atan2(dy, dx);
           const force = (mouseRadius - distance) / mouseRadius;
-          particle.x -= Math.cos(angle) * force * 8;
-          particle.y -= Math.sin(angle) * force * 8;
+          const repelX = -Math.cos(angle) * force * 8;
+          const repelY = -Math.sin(angle) * force * 8;
+          particle.x += repelX;
+          particle.y += repelY;
+          // Add velocity to maintain momentum after repulsion
+          particle.speedX += repelX * 0.1;
+          particle.speedY += repelY * 0.1;
+          // Cap the speed
+          const maxSpeed = 2;
+          const speed = Math.sqrt(particle.speedX ** 2 + particle.speedY ** 2);
+          if (speed > maxSpeed) {
+            particle.speedX = (particle.speedX / speed) * maxSpeed;
+            particle.speedY = (particle.speedY / speed) * maxSpeed;
+          }
         }
 
-        // Gentle drift.
-        particle.x += particle.speedX * 0.5;
-        particle.y += particle.speedY * 0.5;
-
-        // Return to base position (only if far from base).
-        const dxBase = particle.baseX - particle.x;
-        const dyBase = particle.baseY - particle.y;
-        const distanceFromBase = Math.sqrt(dxBase * dxBase + dyBase * dyBase);
-        
-        if (distanceFromBase > 50) {
-          particle.x += dxBase * returnSpeed;
-          particle.y += dyBase * returnSpeed;
-        }
+        // Constant drift - no reduction.
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
 
         // Wrap around screen.
         if (particle.x < -50) {
