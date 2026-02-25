@@ -1,11 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
+import Hero from '../components/Hero.tsx';
 ---
 
 <Layout title="Justin Bornais">
 	<main>
-		<Hero title="Justin Bornais" subtitle="Improving the world, one program at a time" backgroundImage={`/personal-website/me.webp`} />
+		<Hero client:load title="Justin Bornais" subtitle="Software Developer, Musician" />
 	</main>
 </Layout>
 
@@ -14,12 +14,5 @@ import Hero from '../components/Hero.astro';
 		color: white;
 		font-size: 20px;
 		line-height: 1.6;
-	}
-	.text-gradient {
-		background-image: var(--accent-gradient);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-size: 400%;
-		background-position: 0%;
 	}
 </style>
