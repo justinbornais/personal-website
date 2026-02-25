@@ -7,6 +7,21 @@ const Navbar: React.FC = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.includes('#')) {
+      const [path, hash] = href.split('#');
+      // Only handle smooth scroll if we're on the same page or path is root/empty
+      if (!path || path === '/' || window.location.pathname === path) {
+        e.preventDefault();
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          setIsMenuOpen(false);
+        }
+      }
+    }
+  };
+
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/#about', label: 'About' },
@@ -61,6 +76,7 @@ const Navbar: React.FC = () => {
               <li key={link.label}>
                 <a
                   href={link.href}
+                  onClick={(e) => handleAnchorClick(e, link.href)}
                   className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors"
                 >
                   {link.label}
