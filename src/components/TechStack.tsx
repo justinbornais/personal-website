@@ -152,7 +152,7 @@ const skillCategories: SkillCategory[] = [
     theme: 'blue',
     skills: [
       { name: 'Golang', icon: icons.golang, years: 3 },
-      { name: 'Python', icon: icons.python, years: 7 },
+      { name: 'Python', icon: icons.python, years: 4 },
       { name: 'Flask', icon: icons.flask },
       { name: 'SQL', icon: icons.sql },
       { name: 'SQLite', icon: icons.sql },
@@ -167,9 +167,9 @@ const skillCategories: SkillCategory[] = [
       { name: 'Astro', icon: icons.astro, years: 1 },
       { name: 'Hugo', icon: icons.hugo, years: 3 },
       { name: 'TypeScript', icon: icons.typescript, years: 3 },
-      { name: 'JavaScript', icon: icons.javascript, years: 8 },
-      { name: 'HTML', icon: icons.html, years: 8 },
-      { name: 'CSS', icon: icons.css, years: 8 },
+      { name: 'JavaScript', icon: icons.javascript, years: 5 },
+      { name: 'HTML', icon: icons.html, years: 5 },
+      { name: 'CSS', icon: icons.css, years: 5 },
     ],
   },
   {
