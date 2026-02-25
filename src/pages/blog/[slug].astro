@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import 'katex/dist/katex.min.css';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -136,5 +137,27 @@ function formatDate(date: Date): string {
   .prose hr {
     border-color: #374151;
     margin: 2rem 0;
+  }
+  /* Callout/Notice styles */
+  .prose-callout p {
+    margin-bottom: 0.75rem;
+  }
+  .prose-callout p:last-child {
+    margin-bottom: 0;
+  }
+  .prose-callout strong {
+    color: white;
+  }
+  .prose-callout em {
+    color: #d1d5db;
+  }
+  /* KaTeX overrides */
+  .katex {
+    font-size: 1.1em;
+  }
+  .katex-display {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 </style>
