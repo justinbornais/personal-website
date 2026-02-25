@@ -1,6 +1,7 @@
 import React from 'react';
 import Education from './Education';
 import FeaturedProjects from './FeaturedProjects';
+import TechStack from './TechStack';
 
 const About: React.FC = () => {
   return (
@@ -51,6 +52,7 @@ const About: React.FC = () => {
 
         <FeaturedProjects />
         <Education />
+        <TechStack />
       </div>
     </section>
   );
