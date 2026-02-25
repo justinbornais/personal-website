@@ -69,32 +69,36 @@ const Contact: React.FC = () => {
               key={method.title}
               className={`relative bg-gradient-to-br ${method.bgGradient} border border-neutral-700 rounded-lg p-8 hover:border-neutral-600 transition-all group`}
             >
-              <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${method.gradient} text-white mb-4`}>
-                {method.icon}
+              <div className="flex items-center justify-center gap-4 mb-4">
+                <div className={`flex-shrink-0 p-3 rounded-lg bg-gradient-to-r ${method.gradient} text-white`}>
+                  {method.icon}
+                </div>
+                
+                <h3 className="text-2xl font-bold text-white">
+                  {method.title}
+                </h3>
               </div>
               
-              <h3 className="text-2xl font-bold text-white mb-2">
-                {method.title}
-              </h3>
-              
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400 mb-4 text-left">
                 {method.description}
               </p>
               
-              <a
-                href={`mailto:${method.email}`}
-                className="inline-flex items-center gap-2 text-lg font-medium text-white group-hover:text-blue-400 transition-colors"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                <span className="break-all">{method.email}</span>
-              </a>
+              <div className="flex justify-center">
+                <a
+                  href={`mailto:${method.email}`}
+                  className="inline-flex items-center gap-2 text-lg font-medium text-white group-hover:text-blue-400 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span className="break-all">{method.email}</span>
+                </a>
+              </div>
             </div>
           ))}
         </div>
