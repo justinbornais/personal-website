@@ -29,7 +29,7 @@ const Hero: React.FC<HeroProps> = ({
             Learn More
           </a>
           <a
-            href="/personal-website/blog"
+            href="/blog"
             className="px-8 py-3 border border-gray-500 text-gray-300 font-semibold rounded-lg hover:bg-gray-800 transition-colors"
           >
             Read Blog

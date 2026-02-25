@@ -26,7 +26,7 @@ function formatDate(date: Date): string {
       <div class="space-y-8">
         {posts.map((post) => (
           <article class="bg-neutral-800 rounded-lg p-6 hover:bg-neutral-750 transition-colors border border-neutral-700 hover:border-neutral-600">
-            <a href={`/personal-website/blog/${post.slug}`} class="block">
+            <a href={`/blog/${post.slug}`} class="block">
               <h2 class="text-2xl font-semibold text-white mb-2 hover:text-blue-400 transition-colors">
                 {post.data.title}
               </h2>

@@ -8,16 +8,16 @@ const Navbar: React.FC = () => {
   };
 
   const navLinks = [
-    { href: '/personal-website/', label: 'Home' },
-    { href: '/personal-website/#about', label: 'About' },
-    { href: '/personal-website/blog', label: 'Blog' },
-    { href: '/personal-website/#contact', label: 'Contact' },
+    { href: '/', label: 'Home' },
+    { href: '/#about', label: 'About' },
+    { href: '/blog', label: 'Blog' },
+    { href: '/#contact', label: 'Contact' },
   ];
 
   return (
     <nav className="bg-white dark:bg-neutral-950 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-700">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/personal-website/" className="flex items-center space-x-3">
+        <a href="/" className="flex items-center space-x-3">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             Justin Bornais
           </span>
