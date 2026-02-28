@@ -34,6 +34,7 @@ const About: React.FC = () => {
               <p>
                 For the past 4 years, I've had the honor of performing at weddings and funerals, 
                 providing impactful musical experiences during life's most significant occasions.
+                For more information about my musical background, please visit <a className="text-amber-400 font-semibold" href="https://bornaismusic.ca" target="_blank" rel="noopener noreferrer">Bornais Music</a>.
               </p>
             </div>
 
