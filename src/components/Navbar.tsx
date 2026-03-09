@@ -27,6 +27,7 @@ const Navbar: React.FC = () => {
     { href: '/#about', label: 'About' },
     { href: '/blog', label: 'Blog' },
     { href: '/#contact', label: 'Contact' },
+    { href: 'https://resume.justinbornais.ca', label: 'Resume', external: true },
   ];
 
   return (
@@ -77,6 +78,8 @@ const Navbar: React.FC = () => {
                 <a
                   href={link.href}
                   onClick={(e) => handleAnchorClick(e, link.href)}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700 transition-colors"
                 >
                   {link.label}
