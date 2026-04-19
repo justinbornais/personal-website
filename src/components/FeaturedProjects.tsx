@@ -3,13 +3,19 @@ import React, { useEffect, useState, useRef } from 'react';
 interface Repository {
   id: number;
   name: string;
+  full_name: string;
   description: string | null;
   html_url: string;
   stargazers_count: number;
   forks_count: number;
   language: string | null;
   topics: string[];
+  isPinned?: boolean;
 }
+
+const GITHUB_USERNAME = 'justinbornais';
+const FEATURED_REPOSITORY_LIMIT = 6;
+const PINNED_GITHUB_REPOSITORIES = ['justinbornais/typst-sheet-music'];
 
 const languageColors: Record<string, string> = {
   TypeScript: 'bg-blue-500',
@@ -27,6 +33,18 @@ const languageColors: Record<string, string> = {
   Shell: 'bg-green-400',
 };
 
+const fetchGitHubJson = async <T,>(url: string): Promise<T> => {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch repositories');
+  }
+
+  return response.json();
+};
+
+const getRepositoryKey = (repo: Repository) => repo.full_name.toLowerCase();
+
 const FeaturedProjects: React.FC = () => {
   const [repos, setRepos] = useState<Repository[]>([]);
   const [loading, setLoading] = useState(true);
@@ -37,14 +55,28 @@ const FeaturedProjects: React.FC = () => {
   useEffect(() => {
     const fetchRepos = async () => {
       try {
-        const response = await fetch(
-          'https://api.github.com/users/justinbornais/repos?sort=updated&per_page=6&type=public'
-        );
-        if (!response.ok) {
-          throw new Error('Failed to fetch repositories');
-        }
-        const data = await response.json();
-        setRepos(data);
+        const [pinnedRepos, recentRepos] = await Promise.all([
+          Promise.all(
+            PINNED_GITHUB_REPOSITORIES.map((repo) =>
+              fetchGitHubJson<Repository>(
+                `https://api.github.com/repos/${repo}`
+              )
+            )
+          ),
+          fetchGitHubJson<Repository[]>(
+            `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=updated&per_page=${FEATURED_REPOSITORY_LIMIT}&type=public`
+          ),
+        ]);
+
+        const pinnedRepoKeys = new Set(pinnedRepos.map(getRepositoryKey));
+        const featuredRepos = [
+          ...pinnedRepos.map((repo) => ({ ...repo, isPinned: true })),
+          ...recentRepos
+            .filter((repo) => !pinnedRepoKeys.has(getRepositoryKey(repo)))
+            .map((repo) => ({ ...repo, isPinned: false })),
+        ].slice(0, FEATURED_REPOSITORY_LIMIT);
+
+        setRepos(featuredRepos);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'An error occurred');
       } finally {
@@ -148,10 +180,10 @@ const FeaturedProjects: React.FC = () => {
                 transitionDelay: isVisible ? `${index * 100}ms` : '0ms',
               }}
             >
-              <div className="flex items-start justify-between mb-3">
-                <div className="flex items-center gap-2">
+              <div className="flex items-start justify-between gap-3 mb-3">
+                <div className="flex items-center gap-2 min-w-0">
                   <svg
-                    className="w-5 h-5 text-gray-400"
+                    className="w-5 h-5 text-gray-400 flex-shrink-0"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -161,6 +193,11 @@ const FeaturedProjects: React.FC = () => {
                     {repo.name}
                   </h4>
                 </div>
+                {repo.isPinned && (
+                  <span className="flex-shrink-0 rounded-md border border-amber-400/40 bg-amber-400/10 px-2 py-0.5 text-xs font-medium text-amber-300">
+                    Pinned
+                  </span>
+                )}
               </div>
 
               <p className="text-gray-400 text-sm mb-4 line-clamp-2 min-h-[2.5rem]">
