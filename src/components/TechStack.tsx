@@ -17,6 +17,7 @@ import {
   SiLinux,
   SiDocker,
   SiGithub,
+  SiTypst,
 } from 'react-icons/si';
 import { GiPianist, GiPianoKeys, GiMusicalScore, GiGuitar, GiTrumpet, GiViolin } from 'react-icons/gi';
 import { FaMicrophone } from 'react-icons/fa';
@@ -71,6 +72,7 @@ const skillCategories: SkillCategory[] = [
       { name: 'GitHub Actions', icon: <SiGithub className="w-5 h-5" />, years: 3 },
       { name: 'GitHub Copilot', icon: <SiGithub className="w-5 h-5" />, years: 1 },
       { name: 'Docker', icon: <SiDocker className="w-5 h-5" />, years: 1 },
+      { name: 'Typst', icon: <SiTypst className="w-5 h-5" />, years: 1 },
     ],
   },
   {
