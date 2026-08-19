@@ -1,0 +1,107 @@
+---
+title: 'My First Incomprehensible Codebase'
+description: 'What started as a simple mod for a childhood favorite became something I could build, but no longer understand.'
+pubDate: 2026-08-19
+author: 'Justin Bornais'
+tags: ['computer-science']
+---
+
+## Background Story
+
+As a child, I loved the game [Eden - World Builder](http://edengame.net/).
+
+It's a simple mobile game that allows you to create your own worlds, similar to Minecraft. It was originally released in 2010, and only costed $0.99 (plus tax).
+
+It was perfect for creative children who wanted to express their imagination. Plus, it ran flawlessly on my brother's old iPod.
+
+I forgot about this game for several years when I switched to android, as there was no android version of the game.
+
+## Revisiting Eden After All These Years
+
+Then recently, the creator of Eden revived the game this year, supporting it on Windows, [Android](https://play.google.com/store/apps/details?id=net.edengame.newdawn&hl=en_CA) and [Steam](https://store.steampowered.com/app/5004190/Eden__World_Builder/). Suddenly, after so many years, I was reconnected with my favorite childhood game.
+
+After downloading my old worlds and playing around, I rediscovered some features the game was lacking that made building much more challenging. My biggest complaint was the game's lack of flying, which required builders to create temporary scaffolding to build tall structures.
+
+Since the newest versions of Eden are closed-source, I had no way of adding this feature to the original codebase.
+
+To circumvent this... I decided to mod the game.
+
+## Developing my Mod
+
+I found someone else in the [official Eden - World Builder Discord server](https://www.reddit.com/r/EdenGame/comments/1phi05z/official_discord_server_eden_world_builder_rjyxwbc/) who created a simple C script to modify the compiled Eden binary to enable flying.
+
+It was simple, buggy, you couldn't turn off flying, you couldn't fly up and down. But it worked.
+
+That lead me to build a similar mod for the game, one that would allow me to toggle flying on and off.
+
+I didn't want to invest all sorts of time into learning how to inject the right code into the binary, just to mod the game, as I am not a game developer. Because of this, it seemed like a proper use for AI.
+
+After throwing the problem at Codex, I built a simple C program to mod the game. Miraculously, it worked!
+
+Then I started adding more features, including:
+- Auto-placement (rather than having to click repeatedly to place or break blocks);
+- Noclipping;
+- Auto-fill a 2D/3D cube marked by two points;
+- Placing blocks underwater;
+- Adjusting the range for placing blocks;
+- Replacing blocks in-place (rather than having to break and place);
+- Recording macros to copy structures with one click; and
+- Many other features.
+
+Once I created this mod, I decided to [upload it to GitHub](https://github.com/justinbornais/eden-world-builder-mod) so other players could enjoy these features.
+
+However, I must warn any developers... This codebase is incomprehensible.
+
+## A Nightmare of Understanding
+
+The C code contains many magic values representing new bytes to embed into the Eden binary. I could not explain to you what these magic values are or how they enable flying, as this was something Codex figured out by itself.
+
+Additionally, the mod contains multiple assembly files for more difficult features, including the macro recording features, configuration support, and the text HUD overlay.
+
+I am not an expert in assembly whatsoever (at least at the moment of writing this post), and similarly, I could not explain to you how these files work either.
+
+This means I created and published a codebase on GitHub that I do not understand.
+
+## New Phase of Software Development
+
+Thanks to the rise of AI-powered agentic tools for software development, we unlocked the ability to create programs passively, without having to understand what it is we are developing.
+
+Certain prominent developers have described this as a similar effect to the evolution of compilers, which removed the need to view and inspect assembly code. While this is not a perfect analogy (compilers are deterministic, agentic tools are not), it does describe the new programming reality.
+
+In fact, even Elon Musk [tweeted](https://x.com/elonmusk/status/2084304083851034949) in response to James Douma saying, in effect, source code is becoming obsolete:
+
+> This is exactly right. Source code is on the verge of becoming like assembly.
+>
+> The next step is getting rid of "source code" entirely and just making an efficient binary directly with AI.
+
+That is, in effect, what my mod is able to do. Using a combination of C and assembly code, the Eden binary itself is modified to inject new features to improve the gameplay.
+
+## Profound Impacts on Software Development
+
+This new development has ramifications for security and program integrity.
+
+My mod is, of course, a low-stakes example. If something were to go catastrophically wrong, the worst-case scenario is my game crashes or my worlds become corrupted on my computer. Oh well.
+
+However, the same tools that allowed me to create this mod I don't reasonably understand could be used just as easily to build software where the consequences of failure are far greater. This includes banking systems, self-driving vehicles, and national defense.
+
+That being said, we should not (and cannot) reject this new way of developing software, as the technology already exists and is only going to improve. Instead, we need to think about how to navigate this new phase of development in a secure and reasonable way.
+
+If source code really is becoming the new assembly, then perhaps we need to explore what replaces our ability to understand it. This includes:
+- Better/more thorough testing;
+- Stronger verification systems;
+- Improved and precise documentation and project specifications (especially through the use of Architecture Decision Record (ADR) documents); and
+- Safeguards appropriate to the project itself in case of software failure.
+
+## My Takeaways
+
+For my Eden mod, I'm perfectly comfortable crossing this line. The consequences here are negligible, and AI tools allowed me to create something I otherwise could not have built effectively on my own without investing a large amount of time.
+
+For the first time in my career as a software developer, I created a codebase that I cannot hope to fully understand.
+
+And strangely enough, I don't have a problem with this.
+
+However, I certainly would not treat every other codebase the same way. I fully intend on continuing to review and understand the code developed for all companies I work for, as well as any personal projects of importance to me. My Eden mod does not fit this description.
+
+Perhaps the lesson isn't that we must always understand the source code behind the software we create, just like we don't have to become Assembly experts whenever compiling our program.
+
+Instead, we must have enough confidence in the surrounding systems to keep our incomprehensible codebases secure and functional.
