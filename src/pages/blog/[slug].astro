@@ -28,7 +28,7 @@ function formatDate(date: Date): string {
 }
 ---
 
-<Layout title={`${post.data.title} - Justin Bornais`}>
+<Layout title={`${post.data.title} - Justin Bornais`} description={post.data.description}>
   <main class="min-h-screen bg-neutral-900 py-12 px-6">
     <div class="max-w-7xl mx-auto flex flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,32rem)_minmax(0,1fr)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,48rem)_minmax(0,1fr)]">
       <article class="order-2 w-full max-w-3xl mx-auto lg:order-none lg:col-start-2 lg:max-w-[32rem] xl:max-w-3xl">
