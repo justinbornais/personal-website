@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
+import { getReadingTime } from '../../utils/readingTime';
 import 'katex/dist/katex.min.css';
 
 export async function getStaticPaths() {
@@ -47,6 +48,8 @@ function formatDate(date: Date): string {
             <time datetime={post.data.pubDate.toISOString()}>
               {formatDate(post.data.pubDate)}
             </time>
+            <span>•</span>
+            <span>{getReadingTime(post.body)}-minute read</span>
           </div>
           {post.data.tags.length > 0 && (
             <div class="flex gap-2 mt-4">
