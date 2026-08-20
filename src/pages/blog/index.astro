@@ -1,6 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
+import { formatTag } from '../../utils/blog';
 import { getReadingTime } from '../../utils/readingTime';
 
 const posts = (await getCollection('blog')).sort(
@@ -43,7 +44,7 @@ function formatDate(date: Date): string {
                 <div class="flex gap-2">
                   {post.data.tags.map((tag: string) => (
                     <span class="text-xs bg-neutral-700 text-gray-300 px-2 py-1 rounded">
-                      {tag}
+                      {formatTag(tag)}
                     </span>
                   ))}
                 </div>
